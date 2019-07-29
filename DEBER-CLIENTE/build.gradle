@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+}
+
+ext {
+	
+	cxfVersion = '3.3.2'
+	jacksonVersion = '2.9.9'	
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+	compile group: 'org.apache.cxf', name: 'cxf-rt-rs-client', version: "${cxfVersion}"
+
+	compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version: "${jacksonVersion}"
+
+		
+}

@@ -1,0 +1,26 @@
+plugins {
+    
+    id 'war'
+    id 'eclipse-wtp'
+    
+}
+
+dependencies {
+     compile group: 'javax', name: 'javaee-api', version: '8.0'
+     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+     compile group: 'org.jboss', name: 'jboss-remote-naming', version: '2.0.5.Final'
+     compile group: 'org.postgresql', name: 'postgresql', version: '42.1.1'
+     compile group: 'javax.jms', name: 'jms', version: '1.1'
+     
+ 
+
+
+  
+}
+
+
+repositories {
+    
+    
+    jcenter()
+}

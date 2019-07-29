@@ -1,0 +1,39 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.thoughtmechanix.licenses'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "Greenwich.SR2")
+}
+jar.enabled=true
+
+dependencies {
+//dependencia para saber el estado o "health" del  microservicio
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//para buscar en el server de configuracion
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	//Para registrar el microservicio
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'	
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.6.RELEASE'
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.6'
+	
+	
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}

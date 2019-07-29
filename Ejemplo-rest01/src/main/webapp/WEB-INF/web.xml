@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>Ejemplo-rest01</display-name>
+	<!-- Configuramos el servlet de cfx -->
+	<servlet>
+	<!-- Necesita al menos un parámetro -->
+ 		<servlet-name>CXFServlet</servlet-name>
+ 		<servlet-class>org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet</servlet-class>
+ 		
+ 		<init-param>
+ 		<!-- aqui va la clase que tiene la anotación Applicacion -->
+  			<param-name>javax.ws.rs.Application</param-name>
+  			<param-value>com.distribuida.restserver.app.RestServerApplication</param-value>
+ 		</init-param>
+ 
+		<init-param>
+		<!-- para ignorar el mapeo del servlet es decir en esta caso la /app -->
+  			<param-name>jaxrs.application.address.ignore</param-name>
+  			<param-value>true</param-value>
+ 		</init-param>
+
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+<!-- 	<servlet> -->
+<!--  		<servlet-name>CXFServlet</servlet-name> -->
+<!--  		<servlet-class>org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet</servlet-class> -->
+ 		
+<!--  		<init-param> -->
+<!-- 			<param-name>jaxrs.serviceClasses</param-name> -->
+<!-- 			<param-value> -->
+<!-- 				com.distribuida.cxf01.servicios.HolaMundoImpl, -->
+<!-- 			</param-value> -->
+<!-- 		</init-param> -->
+		
+<!--  		<init-param> -->
+<!--  			<param-name>jaxrs.providers</param-name> -->
+<!--  			<param-value> -->
+<!--  				com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider -->
+<!--  			</param-value> -->
+<!--  		</init-param> -->
+
+<!--  			<init-param> -->
+<!-- 	            <param-name>jaxrs.features</param-name> -->
+<!-- 	            <param-value> -->
+<!-- 	                        org.apache.cxf.jaxrs.swagger.Swagger2Feature -->
+<!-- 	                        (basePath=/somepath) -->
+<!-- 	            </param-value> -->
+<!-- 	        </init-param> -->
+            
+<!-- 		<load-on-startup>1</load-on-startup> -->
+<!-- 	</servlet>	 -->
+	
+	
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
+	
+
+</web-app>

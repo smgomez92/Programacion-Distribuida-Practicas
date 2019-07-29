@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    
+    <beans xmlns="http://www.springframework.org/schema/beans"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xsi:schemaLocation="http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans.xsd">  
+          <!-- Aqui se agrega la implementacion -->
+    <bean id="man" class="com.distribuida.servicios.MantenimientoImpl"></bean>
+    <!-- Aquí se agrega el nombre del servicio y se usa el exporter-->  
+    <bean name="/http"    
+    class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">  
+        <property name="service" ref="man"></property>  
+        <property name="serviceInterface" value="com.distribuida.servicios.Mantenimiento"></property>  
+    </bean>  
+      <!-- se debe usar tantos xmls como servlets se cree -->
+    </beans>  

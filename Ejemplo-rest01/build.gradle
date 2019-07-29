@@ -1,0 +1,27 @@
+plugins {
+    id 'java-library'
+    id 'war'
+    id 'eclipse-wtp'
+}
+
+ext {
+	
+	cxfVersion = '3.3.2'
+	jacksonVersion = '2.9.9'	
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"//para los comentarios con tildes 
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+	compile group: 'javax.xml.ws', name: 'jaxws-api', version: '2.3.1'
+	
+	compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-jaxrs', version: "${cxfVersion}"
+	compile group: 'org.apache.cxf', name: 'cxf-rt-transports-http', version: "${cxfVersion}"
+	compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version: "${jacksonVersion}"
+}

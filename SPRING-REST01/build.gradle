@@ -1,0 +1,39 @@
+plugins {
+    id 'java-library'
+    id 'war'
+    id 'eclipse-wtp'
+}
+
+ext {
+	
+	springVersion = '5.1.8'
+	jacksonVersion = '2.9.9'	
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+
+	compile group: 'org.springframework', name: 'spring-context', version: '5.1.8.RELEASE'
+
+	compile group: 'org.springframework', name: 'spring-web', version: '5.1.8.RELEASE'
+
+	compile group: 'org.springframework', name: 'spring-webmvc', version: '5.1.8.RELEASE'
+	
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+	
+	compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version: "${jacksonVersion}"
+	//para habilitar el log de la app 
+	compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+	
+	//para los getters y setters
+	compileOnly 'org.projectlombok:lombok:1.18.8'
+	annotationProcessor 'org.projectlombok:lombok:1.18.8'	
+}

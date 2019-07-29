@@ -8,10 +8,14 @@ import com.distribuida.servicios.HolaMundo;
 import com.distribuida.servicios.HolaMundoImpl;
 
 @Configuration
-@ComponentScan(basePackages="com.distribuida.servicios")
+@ComponentScan(basePackages = "com.distribuida.servicios")
 public class ConfiguracionContenedor {
 @Bean(name="hola")
 public HolaMundo hola() {
+	return new  HolaMundoImpl();
+}
+@Bean(name="hola1")
+public HolaMundo holaMundo() {
 	return new  HolaMundoImpl();
 }
 }

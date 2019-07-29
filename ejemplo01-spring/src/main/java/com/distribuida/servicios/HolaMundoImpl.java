@@ -9,4 +9,10 @@ public class HolaMundoImpl implements HolaMundo {
 		return String.format("Hola %s", nombre);
 
 	}
+
+	@Override
+	public int suma(int a, int b) {
+		// TODO Auto-generated method stub
+		return a + b;
+	}
 }

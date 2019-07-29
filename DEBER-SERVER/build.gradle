@@ -1,0 +1,38 @@
+plugins {
+    id 'java-library'
+    id 'war'
+    id 'eclipse-wtp'
+}
+
+ext {
+	
+	cxfVersion = '3.3.2'
+	jacksonVersion = '2.9.9'	
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+	compile group: 'javax.xml.ws', name: 'jaxws-api', version: '2.3.1'
+	
+	compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-jaxrs', version: "${cxfVersion}"
+	compile group: 'org.apache.cxf', name: 'cxf-rt-transports-http', version: "${cxfVersion}"
+
+	// soporte para auto-inicializacion: servlets 3.1
+	//se autoconfigura e, escanea la clases con anotacion path
+	compile group: 'org.apache.cxf', name: 'cxf-rt-rs-http-sci', version: "${cxfVersion}"
+	
+	compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version: "${jacksonVersion}"
+	//para habilitar el log de la app 
+	compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.26'
+	
+	//para los getters y setters
+	compileOnly 'org.projectlombok:lombok:1.18.8'
+	annotationProcessor 'org.projectlombok:lombok:1.18.8'	
+}

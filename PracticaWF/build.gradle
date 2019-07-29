@@ -1,0 +1,15 @@
+plugins {
+    
+    id  'java'
+    id 'eclipse-wtp'
+}
+
+dependencies {
+    compile group: 'javax.ejb', name: 'ejb-api', version: '3.0'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+}
+
+
+repositories {    
+    jcenter()
+}
