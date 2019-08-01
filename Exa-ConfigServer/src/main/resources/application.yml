@@ -7,6 +7,6 @@ spring:
       server:
         encrypt.enabled: false
         git:
-          uri: https://github.com/smgomez92/configuracion/
+          uri: https://github.com/smgomez92/Programacion-Distribuida-Practicas/tree/master/configuracion/
           username: smgomez92
           password: Santy_172167
