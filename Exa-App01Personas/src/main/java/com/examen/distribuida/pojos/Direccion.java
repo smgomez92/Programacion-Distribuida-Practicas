@@ -28,4 +28,11 @@ public class Direccion {
 		this.descripcion = descripcion;
 	}
 
+	@Override
+	public String toString() {
+		return "Direccion [id=" + id + ", descripcion=" + descripcion + "]";
+	}
+	
+	
+
 }

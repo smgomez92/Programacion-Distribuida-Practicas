@@ -18,26 +18,32 @@ public class ServicioPersona {
 	
 	
 	public Persona savePerson(Persona e) {
-		String query = "insert into persona values('" + e.getId() + "','" + e.getNombre() + "','" + e.getCedula()+ "','"+e.getDireccion().getDescripcion()
-				 + "','"+e.getTipoDireccion()+ "')";
+		String query = "insert into persona (id,cedula,direccion,tipo,nombre,iddir) values('" + e.getId() + "','" + e.getCedula() + "','" + e.getDireccion()+ "','"+e.getTipoDireccion()
+				 + "','"+e.getNombre()+ "','"+e.getIdDir()+ "')";
 		jdbcTemplate.update(query);
 		return e;
 	}
 	
 	public int updatePersona(Persona e) {
-		String query = "update persona set name='" + e.getNombre() + "',cedula='" + e.getCedula() + "',tipoDireccion='" + e.getTipoDireccion() + "',direccion='" + e.getDireccion().getDescripcion()+ "' where id='"
+		String query = "update persona set nombre='" + e.getNombre() + "',cedula='" + e.getCedula() + "',tipo='" + e.getTipoDireccion() + "',direccion='" + e.getDireccion()+ "' where id='"
 				+ e.getId() + "' ";
 		return jdbcTemplate.update(query);
 	}
 
 
-	public int deletePersona(Persona e) {
-		String query = "delete from persona where id='" + e.getId() + "' ";
+	public int deletePersona(String id) {
+		String query = "delete from persona where id='" + id + "' ";
 		return jdbcTemplate.update(query);
 	}
 	
 	public List<Persona> findAll() {
-		return jdbcTemplate.query("SELECT * FROM empleado", new PersonaRowMaper());
+		return jdbcTemplate.query("SELECT * FROM persona ORDER BY id", new PersonaRowMaper());
+	}
+	
+	public Persona findByid(String id) {
+		List<Persona> persona=jdbcTemplate.query("SELECT * FROM persona WHERE id = '"+id+"'", new PersonaRowMaper());
+		
+		return persona.size()==0?null:persona.get(0);
 	}
 	
 	

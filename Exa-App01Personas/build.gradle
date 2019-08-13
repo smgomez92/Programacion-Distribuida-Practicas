@@ -17,6 +17,13 @@ ext {
 	set('springCloudVersion', "Greenwich.SR2")
 }
 
+//Configuracion para excluir a tomcat
+configurations {
+	//exclude tomcat
+	compile.exclude module: 'spring-boot-starter-tomcat'
+	
+}
+
 dependencies {
 	
 	//dependencia para saber el estado o "health" del  microservicio
@@ -29,6 +36,10 @@ dependencies {
 	compile group: 'org.springframework', name: 'spring-context', version: '5.1.6.RELEASE'
    compile group: 'org.springframework', name: 'spring-jdbc', version: '5.1.8.RELEASE'
    compile group: 'org.postgresql', name: 'postgresql', version: '42.1.1'
+   //Agrega a undertow como server servlet en lugar de tomcat
+   compile 'org.springframework.boot:spring-boot-starter-undertow'
+   
+    
 	
 }
 

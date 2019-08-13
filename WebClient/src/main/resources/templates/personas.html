@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Personas</title>
+    </head>
+    
+    <body>   
+    <center>
+    <h2>Personas</h2>
+            <table border="1" style="width:300px">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>nombre</th>
+                        <th>Cédula</th>
+                        <th>Dirección</th>
+                        <th>Tipo Dirección</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${lista}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.nombre}"></td>
+                    <td th:text="${user.cedula}"></td>
+                    <td th:text="${user.direccion}"></td>
+                    <td th:text="${user.tipoDireccion}"></td>
+                    <td><a th:href="@{/editar/{id}(id=${user.id})}">Editar</a></td>
+                    <td><a th:href="@{/eliminar/{id}(id=${user.id})}">Eliminar</a></td>
+                                        
+                </tr>
+            </tbody>
+        </table>
+       <a href="/">Regresar</a>
+       <a href="/crear">Crear persona</a>
+      </center>
+    </body>
+</html>

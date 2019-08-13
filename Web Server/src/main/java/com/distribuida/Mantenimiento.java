@@ -1,6 +1,6 @@
 package com.distribuida;
 
-import java.sql.Connection;
+
 import java.util.List;
 
 import com.distribuida.entidad.Persona;

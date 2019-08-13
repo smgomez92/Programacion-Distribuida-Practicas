@@ -1,0 +1,32 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.prueba.distribuida'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "Greenwich.SR2")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	compile group: 'org.springframework', name: 'spring-context', version: '5.1.6.RELEASE'
+   compile group: 'org.springframework', name: 'spring-jdbc', version: '5.1.8.RELEASE'
+   compile group: 'org.postgresql', name: 'postgresql', version: '42.1.1'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}

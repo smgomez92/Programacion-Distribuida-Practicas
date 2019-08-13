@@ -3,8 +3,8 @@ package com.examen.distribuida;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+//import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+//import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,14 +13,14 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @RefreshScope //Anotación para actualizar las propiedades si estas han sido alteradas en el server config
-@EnableDiscoveryClient 
+//@EnableDiscoveryClient 
 public class ExaApp01PersonasApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExaApp01PersonasApplication.class, args);
 	}
 	//balanceador de carga 
-	@LoadBalanced
+	//@LoadBalanced
 	  @Bean
 	  public RestTemplate getRestTemplate(){
 	      return new RestTemplate();
